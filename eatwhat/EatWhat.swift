@@ -27,4 +27,51 @@ class EathWhat: NSObject {
     var mark: String = ""
     var time: String = ""
     
+    
+    //构造方法
+    required override init() {
+        super.init()
+    }
+    
+    //从object解析回来
+    required init(coder decoder: NSCoder) {
+        self.breakfast = decoder.decodeObject(forKey: "breakfast") as? String ?? ""
+        self.lunch = decoder.decodeObject(forKey: "lunch") as? String ?? ""
+        self.dinner = decoder.decodeObject(forKey: "dinner") as? String ?? ""
+        self.snacks = decoder.decodeObject(forKey: "snacks") as? String ?? ""
+        self.shit1 = decoder.decodeObject(forKey: "shit1") as? String ?? ""
+        self.shit2 = decoder.decodeObject(forKey: "shit2") as? String ?? ""
+        self.shit3 = decoder.decodeObject(forKey: "shit3") as? String ?? ""
+        self.shit4 = decoder.decodeObject(forKey: "shit4") as? String ?? ""
+        self.shit5 = decoder.decodeObject(forKey: "shit5") as? String ?? ""
+        self.libido = decoder.decodeObject(forKey: "libido") as? String ?? ""
+        self.tcm = decoder.decodeObject(forKey: "tcm") as? String ?? ""
+        self.wm = decoder.decodeObject(forKey: "wm") as? String ?? ""
+        self.mark = decoder.decodeObject(forKey: "mark") as? String ?? ""
+        self.time = decoder.decodeObject(forKey: "time") as? String ?? ""
+
+    }
+    
+    //编码成object
+    func encode(withCoder coder: NSCoder) {
+        coder.encode(breakfast, forKey:"breakfast")
+        coder.encode(lunch, forKey:"lunch")
+        coder.encode(dinner, forKey:"dinner")
+        coder.encode(snacks, forKey:"snacks")
+        coder.encode(shit1, forKey:"shit1")
+        coder.encode(shit2, forKey:"shit2")
+        coder.encode(shit3, forKey:"shit3")
+        coder.encode(shit4, forKey:"shit4")
+        coder.encode(shit5, forKey:"shit5")
+        coder.encode(libido, forKey:"libido")
+        coder.encode(tcm, forKey:"tcm")
+        coder.encode(wm, forKey:"wm")
+        coder.encode(mark, forKey:"mark")
+        coder.encode(time, forKey:"time")
+    }
+    
+    
+    
+    
+    
 }

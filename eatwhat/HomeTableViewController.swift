@@ -41,7 +41,44 @@ public class HomeTableViewController : UITableViewController,UITextFieldDelegate
         
         let paramName = self.tableData[indexPath.row] as! String
         
+        
+        let userDefault = UserDefaults.standard
+        let myModelData = userDefault.data(forKey: "eatWhatModel")
+        
+        if myModelData != nil {
+            self.eatWhatModel = NSKeyedUnarchiver.unarchiveObject(with: myModelData!) as! EathWhat
+        }
+        
         paramTF.placeholder = paramName;
+        
+        
+        if indexPath.row == 0{
+            paramTF.text = self.eatWhatModel.breakfast
+        } else if indexPath.row == 1 {
+            paramTF.text = self.eatWhatModel.lunch
+        } else if indexPath.row == 2 {
+            paramTF.text = self.eatWhatModel.dinner
+        } else if indexPath.row == 3 {
+            paramTF.text = self.eatWhatModel.snacks
+        } else if indexPath.row == 4 {
+            paramTF.text = self.eatWhatModel.shit1
+        } else if indexPath.row == 5 {
+            paramTF.text = self.eatWhatModel.shit2
+        } else if indexPath.row == 6 {
+            paramTF.text = self.eatWhatModel.shit3
+        } else if indexPath.row == 7 {
+            paramTF.text = self.eatWhatModel.shit4
+        } else if indexPath.row == 8 {
+            paramTF.text = self.eatWhatModel.shit5
+        } else if indexPath.row == 9 {
+            paramTF.text = self.eatWhatModel.libido
+        } else if indexPath.row == 10 {
+            paramTF.text = self.eatWhatModel.tcm
+        } else if indexPath.row == 11 {
+            paramTF.text = self.eatWhatModel.wm
+        } else if indexPath.row == 12 {
+            paramTF.text = self.eatWhatModel.mark
+        }
         return cell!
     }
     
@@ -79,6 +116,17 @@ public class HomeTableViewController : UITableViewController,UITextFieldDelegate
         } else if index==12 {
             self.eatWhatModel.mark = textField.text!
         }
+        
+        
+        
+        let userDefault = UserDefaults.standard
+        
+        //自定义对象存储
+        let model = self.eatWhatModel
+        //实例对象转换成Data
+        let modelData = NSKeyedArchiver.archivedData(withRootObject: model)
+        //存储Data对象
+        userDefault.set(modelData, forKey: "eatWhatModel")
     }
     
     public func addOneDay() {
