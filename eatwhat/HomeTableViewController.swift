@@ -118,15 +118,8 @@ public class HomeTableViewController : UITableViewController,UITextFieldDelegate
         }
         
         
-        
-        let userDefault = UserDefaults.standard
-        
-        //自定义对象存储
-        let model = self.eatWhatModel
-        //实例对象转换成Data
-        let modelData = NSKeyedArchiver.archivedData(withRootObject: model)
-        //存储Data对象
-        userDefault.set(modelData, forKey: "eatWhatModel")
+        self.saveToUserDefault()
+        	
     }
     
     public func addOneDay() {
@@ -155,12 +148,42 @@ public class HomeTableViewController : UITableViewController,UITextFieldDelegate
             let okAction = UIAlertAction(title: "好的", style: .default, handler: nil)
             alertController.addAction(okAction)
             self.present(alertController, animated: true, completion: nil)
+            
+            
+            self.eatWhatModel.breakfast = ""
+            self.eatWhatModel.lunch = ""
+            self.eatWhatModel.dinner = ""
+            self.eatWhatModel.shit5 = ""
+            self.eatWhatModel.shit4 = ""
+            self.eatWhatModel.shit3 = ""
+            self.eatWhatModel.shit2 = ""
+            self.eatWhatModel.shit1 = ""
+
+            self.saveToUserDefault()
+            self.tableView.reloadData()
+            
             print("插入数据成功")
         }else{
             self.navigationItem.rightBarButtonItem?.isEnabled = true
         }
         
         
+        
+    }
+    
+    
+    
+    
+    public func saveToUserDefault() {
+        
+        let userDefault = UserDefaults.standard
+        
+        //自定义对象存储
+        let model = self.eatWhatModel
+        //实例对象转换成Data
+        let modelData = NSKeyedArchiver.archivedData(withRootObject: model)
+        //存储Data对象
+        userDefault.set(modelData, forKey: "eatWhatModel")
         
     }
 }
