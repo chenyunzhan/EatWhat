@@ -158,6 +158,8 @@ public class HomeTableViewController : UITableViewController,UITextFieldDelegate
             self.eatWhatModel.shit3 = ""
             self.eatWhatModel.shit2 = ""
             self.eatWhatModel.shit1 = ""
+            self.eatWhatModel.snacks = ""
+            self.eatWhatModel.libido = ""
 
             self.saveToUserDefault()
             self.tableView.reloadData()
